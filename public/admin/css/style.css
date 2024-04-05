@@ -1,0 +1,125 @@
+.header{
+    display: flex;
+    background-color: #202020;
+    align-items: center;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+}
+
+.header .inner-title a {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+.header .inner-image{
+    margin-left: 7%;
+}
+
+.header .inner-image img {
+    height: 80px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.sider {
+    margin: 0;
+    padding: 10px 12px;
+    background-color: #323232;
+    width: 150px;
+    height: 100vh;
+    position: fixed;
+    top: 120px;
+    left: 0;
+}
+
+.sider li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.sider li a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.content {
+    margin-top: 20px;
+    margin-left: 180px;
+    width: calc(100% - 200px);
+}
+
+h2 {
+    color: #1EAABA;
+}
+
+thead tr {
+    border-top: 1px solid #ddd;
+}
+
+tbody tr {
+    border-top: 1px solid #ddd;
+}
+
+tbody tr td img {
+    width: 150px;
+    height: auto;
+}
+
+
+/* Bo loc va tim kiem */
+
+.find-box {
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.find-box .title {
+    color: #1EAABA;
+    font-size: 24px;
+    border-bottom: none;
+    padding: 10px 0;
+}
+
+.find-box .inner-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.find-box .inner-wrap .inner-bo-loc button {
+    background-color: #fff;
+    color: #2fb94d;
+    margin-right: 5px;
+}
+
+.find-box .inner-wrap .inner-bo-loc button:hover {
+    background-color: #218838;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.find-box .inner-wrap .inner-search input {
+    width: 500px;
+    border: 1px solid #000;
+    outline: none;
+    padding: 10px;
+    border-radius: 3px;
+}   
+
+.find-box .inner-wrap .inner-search button {
+    background-color: #2db14a;
+    border: 1px solid #2cb049;
+    padding: 10px;
+    margin-left: -4px;
+    color: #fff;
+}   
+
+/* Bo loc va tim kiem */

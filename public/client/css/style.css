@@ -1,0 +1,147 @@
+/* Header Client */
+.header {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 5px;
+}
+
+.header .inner-logo img {
+    max-width: 100%;
+    max-height: 90px;
+}
+
+.header .inner-menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.header .inner-menu li a {
+    text-decoration: none;
+    color: #67676796;
+    font-weight: 700;
+
+}
+
+.header .inner-menu li a:hover {
+    color: #16B8BA;
+    transition: all 0.2s ease-in-out;
+}
+
+.header .inner-social {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header .inner-social li a {
+    color: #67676796;
+    font-size: 28px;
+    margin-left: 18px;
+}
+
+.header .inner-social li a:hover {
+    color: #16B8BA;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Header Client */
+
+/* Footer Client */
+
+footer .inner-footer {
+    color: #757575;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hr-footer {
+    color: #757575;
+}
+
+/* Footer Client */
+
+
+/* Section-1 */
+.section-1 .row {
+    margin: 0;
+    padding: 0;
+}
+
+.section-1 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Section-1 */
+
+
+/* MixiShop */
+
+.mixi-product .row {
+    margin: 0;
+    padding: 0;
+}
+
+.mixi-product .mixi-shop .mixi-item{
+    text-align: center;
+    width: calc((100% / 4) - 10px);
+    margin: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.mixi-product .mixi-shop .mixi-item .inner-image{
+    overflow: hidden;
+}
+
+.mixi-product .mixi-shop .mixi-item:hover img {
+    transform: scale(1.2);
+    transition: all 0.5s ease-in-out;
+}
+
+.mixi-product .mixi-shop .mixi-item .inner-image img {
+    width: 100%;
+    aspect-ratio: 1/1.33;
+    object-fit: cover;
+}
+
+.mixi-product .mixi-shop .mixi-item .category{
+    color: #484848;
+    font-size: 11px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.mixi-product .mixi-shop .mixi-item .title{
+    color: #1eaaba;
+    letter-spacing: 1px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.mixi-product .mixi-shop .mixi-item .rating{
+    color: #D26E4B;
+}
+
+.mixi-product .mixi-shop .mixi-item .price {
+    font-weight: 700;
+}
+
+.list {
+    color: #1eaaba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* MixiShop */

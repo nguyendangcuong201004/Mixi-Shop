@@ -1,0 +1,30 @@
+extends ../../layouts/default.pug
+
+block main 
+    .section-1
+        .row
+            .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+            img(src='../client/images/banner.jpg' alt='Banner MixiShop')
+
+
+    
+    .list DANH SÁCH SẢN PHẨM
+
+    .mixi-product
+        .container
+            .row.mixi-shop
+                each item in records
+                    .mixi-item
+                        .inner-image
+                            img(src=item.image alt=item.title)
+                        .category #{item.category}
+                        .title #{item.title}
+                        .rating
+                            i.fa-sharp.fa-solid.fa-star
+                            i.fa-sharp.fa-solid.fa-star
+                            i.fa-sharp.fa-solid.fa-star
+                            i.fa-sharp.fa-solid.fa-star
+                            i.fa-sharp.fa-solid.fa-star
+                        .price #{item.price}
+
+

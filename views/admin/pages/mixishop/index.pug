@@ -1,0 +1,33 @@
+extends ../../layouts/default.pug
+include ../../mixins/table.pug
+
+block main  
+    .find-box 
+        .title
+            h2 Bộ lọc và tìm kiếm
+        hr
+        .inner-wrap
+            .inner-bo-loc 
+                each item in filterStatus
+                    button(type="button" class=`btn btn-success ${item.class}` button-status=item.status) #{item.name}
+            .inner-search
+                form(action="")
+                    input(type="text", placeholder="Nhập từ khóa...")
+                    button(type="submit") Tìm 
+
+    hr
+    h2 Danh sách sản phẩm
+    table.table.table-sm.table-hover
+        thead
+            tr
+                th STT
+                th Hình ảnh
+                th Tiều đề
+                th Giá
+                th Trạng thái
+                th Hành động 
+
+        tbody
+            each item, index in records    
+                +table(index, item.image, item.title, item.price, item.status)
+            
