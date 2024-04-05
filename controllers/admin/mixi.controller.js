@@ -5,7 +5,7 @@ const filterHelper = require("../../helpers/filter.helper.js");
 module.exports.index = async (req, res) => {
 
 
-    // Filter
+    // Filter///////////////////////////////////////////////////////////////
 
     const find = {
         deleted: false
@@ -41,14 +41,26 @@ module.exports.index = async (req, res) => {
     }
     else filterStatus[0].class = "active";
 
-    // Filter
+    // Filter///////////////////////////////////////////////////////////////////////
+
+    // Search//////////////////////////////////////////////////////////////////////
+
+    if (req.query.keyword){
+        const regex = new RegExp(req.query.keyword, "i");
+        find.title = regex;
+    }
+
+    // Search//////////////////////////////////////////////////////////////////////
+
+
 
 
     const mixiShop = await MixiShop.find(find);
     res.render("admin/pages/mixishop/index.pug", {
         pageTitle: "MixiShop - Tổng quan sản phẩm",
         records: mixiShop,
-        filterStatus: filterStatus
+        filterStatus: filterStatus,
+        keyword: req.query.keyword
     });
 };
 

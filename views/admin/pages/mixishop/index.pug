@@ -11,8 +11,8 @@ block main
                 each item in filterStatus
                     button(type="button" class=`btn btn-success ${item.class}` button-status=item.status) #{item.name}
             .inner-search
-                form(action="")
-                    input(type="text", placeholder="Nhập từ khóa...")
+                form(id="form-search")
+                    input(type="text" placeholder="Nhập từ khóa..." name="keyword" value=keyword)
                     button(type="submit") Tìm 
 
     hr
