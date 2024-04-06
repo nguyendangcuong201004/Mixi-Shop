@@ -28,6 +28,7 @@ block main
                 select(name="type" class="form-control") 
                     option(value="active") Hoạt động 
                     option(value="inactive") Dừng hoạt động 
+                    option(value="change-position") Thay đổi vị trí 
                     option(value="delete-all") Xóa tất cả 
             .form-group.d-none 
                 input(type="text" class="form-control" name="ids" value)
@@ -44,12 +45,13 @@ block main
                 th Hình ảnh
                 th Tiều đề
                 th Giá
+                th Vị trí 
                 th Trạng thái
                 th Hành động 
 
         tbody
             each item, index in records   
-                +table(index, item.image, item.title, item.price, item.status, item.id)
+                +table(index, item.image, item.title, item.price, item.status, item.id, item.positon)
     +pagination(objectPagination)
     form(
         form-change-status 

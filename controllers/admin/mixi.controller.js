@@ -40,7 +40,8 @@ module.exports.index = async (req, res) => {
     const mixiShop = await MixiShop
     .find(find)
     .limit(objectPagination.limitItems)
-    .skip(objectPagination.skip);
+    .skip(objectPagination.skip)
+    .sort({ positon: "desc" });
 
     res.render("admin/pages/mixishop/index.pug", {
         pageTitle: "MixiShop - Tổng quan sản phẩm",
@@ -69,30 +70,39 @@ module.exports.changeStatus = async (req, res) => {
 //[PATCH] /admin/products/change-multi
 module.exports.changeMulti = async (req, res) => {
     const type = req.body.type;
-    let id = req.body.ids;
-    id = id.split(", ");
+    const ids = req.body.ids.split(", ");
 
     switch (type){
         case "active":
             await MixiShop.updateMany({
-                _id: id
+                _id: { $in: ids }
             }, {
                 status: type
             })
             break;
         case "inactive":
             await MixiShop.updateMany({
-                _id: id
+                _id: { $in: ids }
             }, {
                 status: type
             })
             break;
         case "delete-all":
             await MixiShop.updateMany({
-                _id: id
+                _id: { $in: ids }
             }, {
                 deleted: true
             })
+            break;
+        case "change-position":
+            for (item of ids){
+                let [id, positon] = item.split('-');
+                await MixiShop.updateOne({
+                    _id: id
+                }, {
+                    positon: positon
+                })
+            }
             break;
         default:
             break;

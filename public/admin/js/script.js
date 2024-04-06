@@ -127,7 +127,15 @@ if (formChangeMulti){
         if (listInputChecked.length > 0){
             const ids = [];
             listInputChecked.forEach((item) => {
-                ids.push(item.getAttribute("data"));
+                const id = item.getAttribute("data");
+                
+                if (type == "change-position"){
+                    const position = item.closest("tr").querySelector("input[name='position']").value;
+                    ids.push(`${id}-${position}`)
+                }
+                else {
+                    ids.push(id);
+                }
             })
             const input = document.querySelector("input[name='ids']");
             const stringIds = ids.join(", ");

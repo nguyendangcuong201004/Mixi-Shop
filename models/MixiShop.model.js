@@ -6,7 +6,8 @@ const MixiSchema = new mongoose.Schema({
     price: String,
     image: String,
     status: String,
-    deleted: Boolean
+    deleted: Boolean,
+    positon: Number
 });
 
 const MixiShop = mongoose.model('MixiShop', MixiSchema, "mixishops");

@@ -1,4 +1,4 @@
-mixin table(index, image, title, price, status, id)
+mixin table(index, image, title, price, status, id, positon)
     tr
         td  
             input(type="checkbox" name="checkbox" data=id)
@@ -7,6 +7,8 @@ mixin table(index, image, title, price, status, id)
             img(src=image, alt="")
         td #{title}
         td #{price}
+        td  
+            input(name="position" value=positon style="width: 60px" type="number" min="1")
         td 
             if (status == "active")
                button(
