@@ -24,4 +24,8 @@ mixin table(index, image, title, price, status, id)
                ) Dừng hoạt động 
         td  
             button(class="btn btn-warning btn-sm") Sửa
-            button(class="btn btn-danger btn-sm ml-1") Xóa
+            button(
+               button-delete 
+               class="btn btn-danger btn-sm ml-1"
+               data-id=id
+            ) Xóa

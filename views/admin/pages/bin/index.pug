@@ -1,0 +1,47 @@
+extends ../../layouts/default.pug
+include ../../mixins/pagination.pug
+
+block main
+    h2 Danh sách sản phẩm trong thùng rác
+    table(class="table table-hover table-sm")
+        thead
+            tr
+                th STT
+                th Hình ảnh
+                th Tiều đề
+                th Giá
+                th Hành động 
+
+        tbody
+            each item, index in records   
+                tr
+                    td #{index + 1}
+                    td 
+                        img(src=item.image, alt="")
+                    td #{item.title}
+                    td #{item.price}
+                    td 
+                        button(
+                            class="btn btn-success btn-sm ml-1"
+                            button-restore
+                            data-id=item.id
+                        ) Khôi phục
+                        button(
+                            class="btn btn-danger btn-sm ml-1"
+                            button-permanently-deleted
+                            data-id=item.id
+                        ) Xóa vĩnh viễn 
+
+    +pagination(objectPagination)
+    form(
+        form-restore
+        action=""
+        path=`${prefixAdmin}/bin/restore`
+        method="POST"
+    )
+    form(
+        form-permanently-deleted
+        action=""
+        path=`${prefixAdmin}/bin/permanently-deleted`
+        method="POST"
+    )

@@ -10,4 +10,6 @@ routes.patch('/change-status/:status/:id', mixiController.changeStatus);
 
 routes.patch('/change-multi', mixiController.changeMulti);
 
+routes.patch('/delete/:id', mixiController.deleteItem);
+
 module.exports = routes;

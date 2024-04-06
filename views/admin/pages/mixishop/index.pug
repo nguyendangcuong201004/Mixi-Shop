@@ -28,7 +28,7 @@ block main
                 select(name="type" class="form-control") 
                     option(value="active") Hoạt động 
                     option(value="inactive") Dừng hoạt động 
-            .form-group 
+            .form-group.d-none 
                 input(type="text" class="form-control" name="ids" value)
             button(type="submit" class="btn btn-primary") Áp dụng 
     table(
@@ -54,5 +54,11 @@ block main
         form-change-status 
         method="POST"
         path=`${prefixAdmin}/products/change-status`
+        action=""
+    )
+    form(
+        form-delete-item 
+        method="POST"
+        path=`${prefixAdmin}/products/delete`
         action=""
     )

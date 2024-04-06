@@ -93,3 +93,17 @@ module.exports.changeMulti = async (req, res) => {
 
     res.redirect('back')
 }
+
+//[PATCH] /admin/products/delete
+module.exports.deleteItem = async (req, res) => {
+
+    const id = req.params.id;
+
+    await MixiShop.updateOne({
+        _id: id
+    }, {
+        deleted: true
+    })
+
+    res.redirect('back');
+};

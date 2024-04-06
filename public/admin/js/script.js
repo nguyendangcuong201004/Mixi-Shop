@@ -138,3 +138,68 @@ if (formChangeMulti){
 }
 
 // Tinh nang thay doi trang thai nhieu san pham
+
+
+// Tinh nang xoa 1 san pham - xoa mem
+
+const listButtonDelete = document.querySelectorAll("[button-delete ]");
+
+if (listButtonDelete.length > 0){
+    const formDeleteItem = document.querySelector("[form-delete-item]");
+    if (formDeleteItem){
+        listButtonDelete.forEach((button) => {
+            button.addEventListener("click", () => {
+                if (confirm("Bạn chắc chắn muốn xóa sản phẩm này?")){
+                    const id = button.getAttribute("data-id");
+                    const path = formDeleteItem.getAttribute("path");
+                    const action = `${path}/${id}?_method=PATCH`;
+                    formDeleteItem.action = action;
+                    formDeleteItem.submit();
+                }
+            })
+        })
+    }
+}
+
+
+// Tinh nang xoa 1 san pham - xoa mem
+
+// JS cho trang thung rac////////////////////////////////////////////////////////////////////////
+
+const listButtonRestore = document.querySelectorAll('[button-restore]');
+
+if (listButtonRestore.length > 0){
+    const formRestore = document.querySelector('[form-restore]');
+    if (formRestore){
+        listButtonRestore.forEach((button) => {
+            button.addEventListener("click", () => {
+                const id = button.getAttribute("data-id");
+                const path = formRestore.getAttribute("path");
+                const action = `${path}/${id}?_method=PATCH`;
+                formRestore.action = action;
+                formRestore.submit();
+            })
+        })
+    }
+}
+
+const listButtonPermanentlyDeleted = document.querySelectorAll("[button-permanently-deleted]");
+
+if (listButtonPermanentlyDeleted.length > 0){
+    const formPermanentlyDeleted = document.querySelector('[form-permanently-deleted]');
+    if (formPermanentlyDeleted){
+        listButtonPermanentlyDeleted.forEach((button) => {
+            button.addEventListener("click", () => {
+               if (confirm("Bạn chắc chắn muốn xóa vĩnh viễn sản phẩm này?")){
+                    const id = button.getAttribute("data-id");
+                    const path = formPermanentlyDeleted.getAttribute("path");
+                    const action = `${path}/${id}?_method=DELETE`;
+                    formPermanentlyDeleted.action = action;
+                    formPermanentlyDeleted.submit();
+               }
+            })
+        })
+    }
+}
+
+// JS cho trang thung rac////////////////////////////////////////////////////////////////////////
