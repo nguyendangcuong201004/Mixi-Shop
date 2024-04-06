@@ -30,5 +30,5 @@ block main
 
         tbody
             each item, index in records    
-                +table(index, item.image, item.title, item.price, item.status)
+                +table(index, item.image, item.title, item.price, item.status, item.id)
     +pagination(objectPagination)
