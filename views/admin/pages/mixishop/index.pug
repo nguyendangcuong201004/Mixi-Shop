@@ -18,9 +18,27 @@ block main
 
     hr
     h2 Danh sách sản phẩm
-    table.table.table-sm.table-hover
+    form(
+        action=`${prefixAdmin}/products/change-multi?_method=PATCH`
+        method="POST"
+        form-change-multi
+    )
+        .d-flex.align-items-start 
+            .form-group 
+                select(name="type" class="form-control") 
+                    option(value="active") Hoạt động 
+                    option(value="inactive") Dừng hoạt động 
+            .form-group 
+                input(type="text" class="form-control" name="ids" value)
+            button(type="submit" class="btn btn-primary") Áp dụng 
+    table(
+        class="table table-hover table-sm "
+        checkbox-multi
+    )
         thead
             tr
+                th 
+                    input(type="checkbox" name="checkall")
                 th STT
                 th Hình ảnh
                 th Tiều đề
@@ -29,6 +47,12 @@ block main
                 th Hành động 
 
         tbody
-            each item, index in records    
+            each item, index in records   
                 +table(index, item.image, item.title, item.price, item.status, item.id)
     +pagination(objectPagination)
+    form(
+        form-change-status 
+        method="POST"
+        path=`${prefixAdmin}/products/change-status`
+        action=""
+    )

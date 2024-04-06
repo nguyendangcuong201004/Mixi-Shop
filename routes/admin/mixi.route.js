@@ -6,7 +6,8 @@ const mixiController = require("../../controllers/admin/mixi.controller.js");
 
 routes.get('/', mixiController.index);
 
-routes.get('/:status/:id', mixiController.changeStatus);
+routes.patch('/change-status/:status/:id', mixiController.changeStatus);
 
+routes.patch('/change-multi', mixiController.changeMulti);
 
 module.exports = routes;

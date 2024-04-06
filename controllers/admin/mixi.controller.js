@@ -52,7 +52,7 @@ module.exports.index = async (req, res) => {
 };
 
 
-//[GET] /admin/products/:status/:id
+// [PATCH] /admin/products/change-status/:status/:id
 module.exports.changeStatus = async (req, res) => {
     const status = req.params.status;
     const id = req.params.id;
@@ -61,7 +61,35 @@ module.exports.changeStatus = async (req, res) => {
         _id: id
     }, {
         status: status
-    });
+    })
 
-    res.redirect('back');
+    res.redirect("back");
+};
+
+//[PATCH] /admin/products/change-multi
+module.exports.changeMulti = async (req, res) => {
+    const type = req.body.type;
+    let id = req.body.ids;
+    id = id.split(", ");
+
+    switch (type){
+        case "active":
+            await MixiShop.updateMany({
+                _id: id
+            }, {
+                status: type
+            })
+            break;
+        case "inactive":
+            await MixiShop.updateMany({
+                _id: id
+            }, {
+                status: type
+            })
+            break;
+        default:
+            break;
+    }
+
+    res.redirect('back')
 }
