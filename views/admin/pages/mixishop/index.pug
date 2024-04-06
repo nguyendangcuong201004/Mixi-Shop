@@ -1,5 +1,6 @@
 extends ../../layouts/default.pug
 include ../../mixins/table.pug
+include ../../mixins/pagination.pug
 
 block main  
     .find-box 
@@ -30,4 +31,4 @@ block main
         tbody
             each item, index in records    
                 +table(index, item.image, item.title, item.price, item.status)
-            
+    +pagination(objectPagination)
