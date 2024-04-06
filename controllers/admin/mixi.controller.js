@@ -87,6 +87,13 @@ module.exports.changeMulti = async (req, res) => {
                 status: type
             })
             break;
+        case "delete-all":
+            await MixiShop.updateMany({
+                _id: id
+            }, {
+                deleted: true
+            })
+            break;
         default:
             break;
     }

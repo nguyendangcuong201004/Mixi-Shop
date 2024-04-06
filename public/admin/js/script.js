@@ -120,6 +120,9 @@ const formChangeMulti = document.querySelector("[form-change-multi]");
 if (formChangeMulti){
     formChangeMulti.addEventListener("submit", (event) => {
         event.preventDefault();
+        
+        const type = formChangeMulti.querySelector("select[name='type']").value;
+
         const listInputChecked = document.querySelectorAll("input[name='checkbox']:checked");   
         if (listInputChecked.length > 0){
             const ids = [];
@@ -129,6 +132,13 @@ if (formChangeMulti){
             const input = document.querySelector("input[name='ids']");
             const stringIds = ids.join(", ");
             input.value = stringIds;
+
+            if (type == "delete-all"){
+                if (!confirm("Bạn chắc chắn muốn xóa những sản phẩm này?")){
+                    return;
+                }
+            }
+
             formChangeMulti.submit();
         }
         else {
@@ -163,6 +173,42 @@ if (listButtonDelete.length > 0){
 
 
 // Tinh nang xoa 1 san pham - xoa mem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // JS cho trang thung rac////////////////////////////////////////////////////////////////////////
 
