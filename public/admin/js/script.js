@@ -184,10 +184,40 @@ if (listButtonDelete.length > 0){
 
 
 
+// Show alert
 
+const showAlert = document.querySelector("[show-alert]");
+if (showAlert){
+    const time = showAlert.getAttribute("data-time");
+    setTimeout(() => {
+        showAlert.classList.add("alert-hidden")
+    }, parseInt(time))
+}
 
+// Close alert
+const closeAlert = document.querySelector("[close-alert]");
+if (closeAlert){
+    closeAlert.addEventListener("click", () => {
+        showAlert.classList.add("alert-hidden")
+    })
+}
 
+//preview
 
+const uploadImage = document.querySelector("[upload-image]");
+if(uploadImage) {
+  const uploadImageInput = uploadImage.querySelector("[upload-image-input]");
+  const uploadImagePreview = uploadImage.querySelector("[upload-image-preview]");
+
+  uploadImageInput.addEventListener("change", () => {
+    const file = uploadImageInput.files[0];
+    if(file) {
+      uploadImagePreview.src = URL.createObjectURL(file);
+    }
+  });
+}
+
+//preview
 
 
 

@@ -1,6 +1,7 @@
 const MixiShop = require("../../models/MixiShop.model.js");
 const filterHelper = require("../../helpers/filter.helper.js");
 const paginationHelper = require("../../helpers/pagination.helper.js");
+const prefixAdmin = require("../../configs/system.js");
 //[GET] /admin/products
 
 module.exports.index = async (req, res) => {
@@ -64,6 +65,11 @@ module.exports.changeStatus = async (req, res) => {
         status: status
     })
 
+    const infoProduct = await MixiShop.findOne({
+        _id: id
+    })
+    req.flash('success', `Cập nhật trạng thái sản phẩm ${infoProduct.title} thành công!`);
+
     res.redirect("back");
 };
 
@@ -79,6 +85,7 @@ module.exports.changeMulti = async (req, res) => {
             }, {
                 status: type
             })
+            req.flash('success', `Cập nhật trạng thái thành công!`);
             break;
         case "inactive":
             await MixiShop.updateMany({
@@ -86,6 +93,7 @@ module.exports.changeMulti = async (req, res) => {
             }, {
                 status: type
             })
+            req.flash('success', 'Cập nhật trạng thái thành công!');
             break;
         case "delete-all":
             await MixiShop.updateMany({
@@ -93,6 +101,7 @@ module.exports.changeMulti = async (req, res) => {
             }, {
                 deleted: true
             })
+            req.flash('success', 'Sản phẩm đã di chuyển vào thùng rác!');
             break;
         case "change-position":
             for (item of ids){
@@ -103,6 +112,7 @@ module.exports.changeMulti = async (req, res) => {
                     positon: positon
                 })
             }
+            req.flash('success', 'Cập nhật vị trí thành công!');
             break;
         default:
             break;
@@ -122,5 +132,56 @@ module.exports.deleteItem = async (req, res) => {
         deleted: true
     })
 
+    req.flash('success', 'Sản phẩm đã xóa thành công!');
+
     res.redirect('back');
 };
+
+//[GET]  /admin/products/create
+module.exports.create = (req, res) => {
+    res.render("admin/pages/mixishop/create.pug", {
+        pageTitle: "Thêm sản phẩm"
+    });
+}
+
+//[POST]  /admin/products/create
+module.exports.createPost = async (req, res) => {
+    
+    if (req.body.positon){
+        req.body.positon = parseInt(req.body.positon);
+    }
+    else {
+        const countRecords = await MixiShop.countDocuments({});
+        req.body.positon = countRecords + 1;
+    }
+
+    if (req.file){
+        req.body.image = `/uploads/${req.file.filename}`;
+    }
+
+    console.log(req.file)
+
+
+    const records = new MixiShop(req.body);
+    await records.save();
+
+    req.flash("success", "Thêm mới sản phẩm thành công!");
+
+
+    res.redirect(`${prefixAdmin}/products`);
+}
+
+// [GET] /admin/products/detail
+module.exports.detail = async (req, res) => {
+
+    const id = req.params.id;
+
+    const record = await MixiShop.findOne({
+        _id: id
+    })
+
+    res.render("admin/pages/mixishop/detail.pug", {
+        pageTitle: record.title,
+        record: record
+    })
+}

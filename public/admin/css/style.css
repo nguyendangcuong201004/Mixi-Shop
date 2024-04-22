@@ -123,3 +123,52 @@ tbody tr td img {
 }   
 
 /* Bo loc va tim kiem */
+
+/* Show alert */
+
+[show-alert] {
+    position: fixed!important;
+    top: 130px;
+    right: 15px;
+    z-index: 999;
+    margin: 0!important;
+    padding: 10px 20px!important;
+}
+
+[show-alert].alert-hidden {
+    animation-name: alert-hidden;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+[close-alert] {
+    display: inline-block;
+    margin: 0!important;
+    padding: 5px 10px!important;
+    font-size: 20px;
+}
+
+@keyframes alert-hidden {
+    from {
+        right: 15px;
+    }
+    to {
+        right: -100%;
+        display: none;
+    }
+}
+
+/* Show alert */
+
+.image-preview {
+    width: 150px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 15px;
+  }
+  
+  .image-preview[src=""] {
+    display: none;
+  }

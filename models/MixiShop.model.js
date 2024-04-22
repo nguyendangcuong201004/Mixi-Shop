@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const slug = require('mongoose-slug-updater');
+
+mongoose.plugin(slug);
 
 const MixiSchema = new mongoose.Schema({
     title: String,
@@ -6,8 +9,14 @@ const MixiSchema = new mongoose.Schema({
     price: String,
     image: String,
     status: String,
-    deleted: Boolean,
-    positon: Number
+    deleted: {
+        type: Boolean,
+        default: false
+    },
+    positon: Number,
+    slug: { type: String, slug: "title", unique: true}
+}, {
+    timestamps: true
 });
 
 const MixiShop = mongoose.model('MixiShop', MixiSchema, "mixishops");
